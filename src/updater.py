@@ -23,7 +23,7 @@ SETTINGS = dict(
     cache_for_indexer = dict(
         host="localhost",
         port=6379,
-        db=1
+        db=2
     ),
     collection_for_index="indexer::",
     start_year=2002,
@@ -39,10 +39,35 @@ def print_as_list(to_print):
 ##############################################################################
 
 def main():
+    #
+    # start_global = time.time()
+    #
+    # engine_stacks = SearchEngineStacks(SETTINGS=SETTINGS)
+    #
+    # print(engine_stacks.action_populate_cve()["message"])
+    # print(engine_stacks.action_update_cve_modified()["message"])
+    # print(engine_stacks.action_update_cve_recent()["message"])
+    #
+    #
+    # start = time.time()
+    # print_as_list(engine_stacks.find_by_component_and_version("openssl", "1.0*"))
+    # print('Search Time is: {}'.format(time.time() - start))
+    # pass
+    # print('Global time is: {}'.format(time.time() - start_global))
+
+
+
+    # search engine with flow - get all keys as list and walk throught keys *
+
+
+
+    # see algo - what thing vse tormozit suka???
+
+
 
     start_global = time.time()
 
-    engine_stacks = SearchEngineStacks(SETTINGS=SETTINGS)
+    engine_stacks = SearchEngineHashes(SETTINGS=SETTINGS)
 
     print(engine_stacks.action_populate_cve()["message"])
     print(engine_stacks.action_update_cve_modified()["message"])

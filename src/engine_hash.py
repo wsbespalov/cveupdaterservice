@@ -223,13 +223,13 @@ class SearchEngineHashes(object):
 
         current_year = datetime.now().year
         for year in range(self.SETTINGS["start_year"], current_year + 1):
-            print("Populate CVE-{}".format(year))
-
             source = self.SETTINGS["sources"]["cve_base"] + str(year) + self.SETTINGS["sources"]["cve_base_postfix"]
             cve_item, response = download_cve_file(source)
             parsed_cve_item = parse_cve_file(cve_item)
 
             count += self.cve_loop(parsed_cve_item)
+
+            print("Populate CVE-{} takes {} sec.".format(year, time.time() - start_time))
 
         time_delta = time.time() - start_time
 
